@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Itsa</title>
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+  <script src="../../js/jquery-1.11.2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/archivo.js"></script>
+  <script src="../../js/sw.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  </style>
+</head>
+<script type="text/javascript">
+  // Hide submenus
+  $('#body-row .collapse').collapse('hide');
+
+  // Collapse/Expand icon
+  $('#collapse-icon').addClass('fa-angle-double-left');
+
+  // Collapse click
+  $('[data-toggle=sidebar-colapse]').click(function () {
+    SidebarCollapse();
+  });
+
+  function SidebarCollapse() {
+    $('.menu-collapsed').toggleClass('d-none');
+    $('.sidebar-submenu').toggleClass('d-none');
+    $('.submenu-icon').toggleClass('d-none');
+    $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+
+    // Treating d-flex/d-none on separators with title
+    var SeparatorTitle = $('.sidebar-separator-title');
+    if (SeparatorTitle.hasClass('d-flex')) {
+      SeparatorTitle.removeClass('d-flex');
+    } else {
+      SeparatorTitle.addClass('d-flex');
+    }
+
+    // Collapse/Expand icon
+    $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+  }
+
+</script>
+
+<style type="text/css">
+  #body-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #sidebar-container {
+    min-height: 100vh;
+    background-color: #333;
+    padding: 0;
+  }
+
+  /* Sidebar sizes when expanded and expanded */
+  .sidebar-expanded {
+    width: 230px;
+  }
+
+  .sidebar-collapsed {
+    width: 60px;
+  }
+
+  /* Menu item*/
+  #sidebar-container .list-group a {
+    height: 50px;
+    color: white;
+  }
+
+  /* Submenu item*/
+  #sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+  }
+
+  .sidebar-submenu {
+    font-size: 0.9rem;
+  }
+
+  /* Separators */
+  .sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+  }
+
+  .sidebar-separator {
+    background-color: #333;
+    height: 25px;
+  }
+
+  .logo-separator {
+    background-color: #333;
+    height: 60px;
+  }
+
+  /* Closed submenu icon */
+  #sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+    content: " \f0d7";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+  }
+
+  /* Opened submenu icon */
+  #sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+    content: " \f0da";
+    font-family: FontAwesome;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+  }
+
+
+  /* --------------------------------- Banner ---------------------------- */
+  .banner {
+    display: flex;
+    background: yellow;
+    width: 100%;
+    height: 200px;
+  }
+
+  .banner_item {
+    flex: 1;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: flex-grow 0.2s;
+
+  }
+
+  .banner_item:hover .banner_title {
+    transform: rotate(0deg);
+  }
+
+  .banner_item:hover {
+    flex-grow: 10;
+  }
+
+  .banner_item:nth-child(1) {
+    background: hsl(90, 100%, 40%)
+  }
+
+  .banner_item:nth-child(2) {
+    background: rgb(246, 132, 17)
+  }
+
+  .banner_item:nth-child(3) {
+    background: hsl(200, 100%, 40%)
+  }
+
+  .banner_item:nth-child(4) {
+    background: hsl(280, 100%, 40%)
+  }
+
+  .banner_title {
+    margin: 0px;
+    transform: rotate(-90deg);
+    transition: transform 0.2s 0.2s;
+  }
+
+  .bg-yellow {
+    background-color: yellow;
+  }
+
+
+  /* ----------------------TOP NAVBAR---------------------------------------- */
+
+  .navbar {
+    display: flex;
+    background-color: #00008B;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    color: white;
+    height: 70px;
+    margin-bottom: 0px;
+    border-bottom: 8px solid gold;
+  }
+
+  .navbar_links {
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar_links li {
+    list-style: none;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  body{
+  background-color:lightgrey;
+}
+
+  .navbar_links a {
+    color: white;
+    text-decoration: none;
+    margin: 0px 10px;
+  }
+
+  .navbar_links li:hover {
+    background-color: blue;
+  }
+
+  .mg-profile-Topnavbar {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    background-color: #000;
+  }
+
+  .mg-profile-Topnavbar img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .img-profile {
+    border-radius: 50%;
+    height: 50px;
+  }
+</style>
+
+
+
+<body>
+  <div class="mb-0">
+    <header>
+      <nav class="navbar">
+        <h1>ITSA</h1>
+
+        <ul class="navbar_links">
+          <li><a href="#">@userAccount</a></li>
+          <li><a href="#"><img src="../../img/img_avatar.png" class="img-profile" alt=""></a></li>
+        </ul>
+      </nav>
+
+    </header>
+  </div>
+
+  <!-- Bootstrap row -->
+  <div class="row" id="body-row mt-0">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-sm-block">
+      <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+      <!-- Bootstrap List Group -->
+      <ul class="list-group">
+        <!-- Separator with title -->
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+          <small>MAIN MENU</small>
+        </li>
+        <!-- /END Separator -->
+        <!-- Menu with submenu -->
+        <a href="../../index.html" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-calendar fa-fw mr-3"></span>
+            <span class="menu-collapsed">Inicio</span>
+          </div>
+        </a>
+           <a aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" href="#submenu1">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-dashboard fa-fw mr-3">
+                        </span>
+                        <span class="menu-collapsed">
+                            Unidad 1
+                        </span>
+                        <span class="submenu-icon ml-auto">
+                        </span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div class="collapse sidebar-submenu" id="submenu1">
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="tema1.html">
+                        <span class="menu-collapsed">
+                            Algoritmo
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="tema2.html">
+                        <span class="menu-collapsed">
+                            Representación de los a..
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="tema3.html">
+                        <span class="menu-collapsed">
+                            Variables y expresiones
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="tema4.html">
+                        <span class="menu-collapsed">
+                            Datos en programación
+                        </span>
+                    </a>
+                </div>
+                <a aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" href="#submenu2">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-user fa-fw mr-3">
+                        </span>
+                        <span class="menu-collapsed">
+                            Unidad 2
+                        </span>
+                        <span class="submenu-icon ml-auto">
+                        </span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div class="collapse sidebar-submenu" id="submenu2">
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="../unidad2/tema1.html">
+                        <span class="menu-collapsed">
+                            Estructura
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="../unidad2/tema2.html">
+                        <span class="menu-collapsed">
+                            Operador
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="../unidad2/tema3.html">
+                        <span class="menu-collapsed">
+                            Autoevaluacion
+                        </span>
+                    </a>
+
+                </div>
+                 <a aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" href="#submenu3">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-user fa-fw mr-3">
+                        </span>
+                        <span class="menu-collapsed">
+                            Unidad 3
+                        </span>
+                        <span class="submenu-icon ml-auto">
+                        </span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div class="collapse sidebar-submenu" id="submenu3">
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="../unidad3/tema1.html">
+                        <span class="menu-collapsed">
+                            Estructura algoritmica
+                        </span>
+                    </a>
+                      <a class="list-group-item list-group-item-action bg-dark text-white" href="../unidad3/tema4.html">
+                        <span class="menu-collapsed">
+                            Estructura Condicional
+                        </span>
+                    </a>
+                    <a class="list-group-item list-group-item-action bg-dark text-white" href="../unidad3/tema2.html">
+                        <span class="menu-collapsed">
+                          Estructura de seleccion
+                        </span>
+                    </a>
+                </div>
+                    <a aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start" data-toggle="collapse" href="#submenu4">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span class="fa fa-user fa-fw mr-3">
+                        </span>
+                        <span class="menu-collapsed">
+                            Unidad 4
+                        </span>
+                        <span class="submenu-icon ml-auto">
+                        </span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div class="collapse sidebar-submenu" id="submenu4">
+                     <a class="list-group-item list-group-item-action bg-dark text-white" href="../unidad4/tema3.html">
+                        <span class="menu-collapsed">
+                          Estructura de Repeticion
+                        </span>
+                    </a>
+
+                </div>
+
+
+
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-tasks fa-fw mr-3"></span>
+            <span class="menu-collapsed">Actividades</span>
+          </div>
+        </a>
+        <!-- Separator with title -->
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+          <small>OPTIONS</small>
+        </li>
+        <!-- /END Separator -->
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-calendar fa-fw mr-3"></span>
+            <span class="menu-collapsed">Herramientas</span>
+          </div>
+        </a>
+
+
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-question fa-fw mr-3"></span>
+            <span class="menu-collapsed">Ayuda</span>
+          </div>
+        </a>
+
+
+
+      </ul><!-- List Group END-->
+    </div><!-- sidebar-container END -->
+
+
+    <!-- MAIN -->
+    <div class="col">
+      <div class="container">
+
+        <h1 class="h1">VARIABLES</h1>
+        <div class="container">
+          <div class="row">
+            <div class="col-10">
+              <h6>Las variables en el ambiente computacional además de ser valores que pueden o no cambiar en el tiempo,
+                también son espacios de memorias que permiten almacenar datos. </h6>
+            </div>
+
+          </div>
+
+
+
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                    aria-controls="collapseOne">
+                    <h5>Reglas para dar Nombre a Variables</h5>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                  <ol>
+                    <li>Debe iniciar con una letra.</li>
+                    <li>Puede contener después de la letra se puede colocar letras o números.</li>
+                    <li>No debe contener espacios en blanco.</li>
+                    <li>No debe contener operadores matemáticos como (+, -, *, / , etc.).</li>
+                  </ol>
+
+
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Ver ejemplos
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Nombre de variables</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <h5>Ejemplos de Nombres de Variables</h5>
+                          <table class="table table-dark">
+                            <th>
+                              Nombre Variable
+                            </th>
+                            <TH>
+                              Estado(Correcto o Incorrecto)
+                            </TH>
+                            <tr>
+                              <td>CasaCasa verde</td>
+                              <td>Incorrecto (Utiliza espacio en blanco)</td>
+                            </tr>
+                            <tr>
+                              <td>A2</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>A2B</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>1b3</td>
+                              <td>Incorrecto(Empieza con número)</td>
+                            </tr>
+                            <tr>
+                              <td>N#</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>N#</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>N+d</td>
+                              <td>Incorrecto(Utiliza Operadores matemáticos)</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END MODAL 1 -->
+
+
+                  <div class="col-7">
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h4 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    <h5>1.5.2 Autoevaluación</h5>
+                  </button>
+                  </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+
+                  <div class="col-7">
+                    <p> Indique si los nombres de estas variables son correctos o incorrectos y justifique su
+                      respuesta.<br></p>
+
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End acordeon 2 -->
+
+
+            <div class="card">
+              <div class="card-header" id="headingTres">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTres"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    <h5>1.5.3 Expresiones Matemáticos</h5>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseTres" class="collapse" aria-labelledby="headingTres" data-parent="#accordion">
+                <div class="card-body">
+
+                  <div class="col-7">
+                    <p> Son todas las operaciones matemáticas básicas, se definen en java de la siguiente forma:<br></p>
+
+                    <table class="table table-dark">
+                      <th>
+                        Operación
+                      </th>
+                      <TH>
+                        Operador
+                      </TH>
+                      <tr>
+                        <td>Suma</td>
+                        <td>+</td>
+                      </tr>
+                      <tr>
+                        <td>Resta</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>División</td>
+                        <td>/</td>
+                      </tr>
+                      <tr>
+                        <td>Módulo División</td>
+                        <td>%</td>
+                      </tr>
+                      <tr>
+                        <td>Cociente entero de división</td>
+                        <td>div</td>
+                      </tr>
+                    </table>
+
+
+                     <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Ver ejemplo
+                  </button>
+
+                  <!-- Modal -->
+                  <div class="modal fade" id="modal3" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="modal3">Expresiones matemáticas</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <h5>Ejemplos de Nombres de Variables</h5>
+                          <table class="table table-dark">
+                            <th>
+                              Nombre Variable
+                            </th>
+                            <TH>
+                              Estado(Correcto o Incorrecto)
+                            </TH>
+                            <tr>
+                              <td>CasaCasa verde</td>
+                              <td>Incorrecto (Utiliza espacio en blanco)</td>
+                            </tr>
+                            <tr>
+                              <td>A2</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>A2B</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>1b3</td>
+                              <td>Incorrecto(Empieza con número)</td>
+                            </tr>
+                            <tr>
+                              <td>N#</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>N#</td>
+                              <td>Correcto</td>
+                            </tr>
+                            <tr>
+                              <td>N+d</td>
+                              <td>Incorrecto(Utiliza Operadores matemáticos)</td>
+                            </tr>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END MODAL 1 -->
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End acordeon 3 -->
+
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div><!-- Main Col END -->
+
+    </div><!-- body-row END -->
+
+
+</body>
+
+</html>
